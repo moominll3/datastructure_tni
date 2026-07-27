@@ -1,0 +1,56 @@
+public class StackArrayBased {
+ private int[] stacks; // array to store elements
+ private final int MAX_STACK = 50; // maximum size of stack
+ private int top; // index of the top element
+ 
+ // create an empty stack with a maximum size
+ public StackArrayBased() {
+      stacks = new int[MAX_STACK];
+      top = -1;
+ }
+ 
+ // create an empty stack with a specific size
+ public StackArrayBased(int capacity) {
+     stacks = new int[capacity];
+     top = -1;
+   }
+ public boolean isEmpty(){
+	 if (top == -1) {
+		 return true; //ถ้าเป็นค่าว่างให้รีเทิน true ถ้าไม่ใช่ค่าว่างจะเป็นfalse
+	 }
+	 return false;
+ }
+ public boolean isFull(){
+	 if (top == stacks.length-1) {
+		 return true; 
+	 }
+	 return false;
+ }
+
+ public boolean push(int new_element) {
+	 if(isFull() == false) {
+		 top++;
+		 stacks[ top ] = new_element;
+		 return true;
+	 }
+	 return false;
+ }
+ public int peek() {
+	 if (!isEmpty ()) {
+		 return stacks[top];
+	 }
+	 return -1;
+ }
+ public int pop() { // pop ดูข้อมูลและลบข้อมูลตัวบนสุด(top)
+	 if (!isEmpty ()) {
+		 int top_element =stacks[top];
+		 top --;
+		 return top_element;
+	 }
+	 return -1;
+ }
+ public void popAll() {
+	 stacks = new int[MAX_STACK];
+     top = -1;
+ }
+}
